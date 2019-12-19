@@ -8,10 +8,26 @@ using SideProjectVidly.ViewModels;
 
 namespace SideProjectVidly.Controllers
 {
-    public class MovieController : Controller
+    public class MoviesController : Controller
     {
-        // GET: Movie
-        [Route("movie/Rondom")]
+        public ViewResult Index()
+        {
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie{ Id = 1, Name = "Sherk"},
+                new Movie{ Id = 2, Name = "Frozen"}
+            };
+        }
+
+        // GET: Movies/Rondom
+        [Route("movies/Rondom")]
         public ActionResult Random()
         {
             var movie = new Movie() {Name = "Shrek!"};
